@@ -12,6 +12,8 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 //guang help meh ~Anjew
 //WIlllllllllllllllllllllllY BIllY BIllY BO WIllY
 
+//William needs to build the claw so mis can program ;-;
+
 @TeleOp(name="Teleop9110", group="Opmode")
         public class TeleOp9110 extends OpMode {
 
