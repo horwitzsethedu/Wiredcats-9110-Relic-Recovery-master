@@ -4,9 +4,10 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
-
+//meh tbh idk ab the claw idea, i gotta see it mechanically first
 //wat is extens ecks dee
 //guang help meh ~Anjew
 //WIlllllllllllllllllllllllY BIllY BIllY BO WIllY
@@ -17,6 +18,12 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
         //Drive train
         DcMotor left;
         DcMotor right;
+
+        //Claw
+        /*
+        Servo claw;
+        Servo claw2;
+        */
 
         //LINEAR
         DcMotor linears;
@@ -42,6 +49,10 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
         scissors = hardwareMap.dcMotor.get("s");
         conveyor = hardwareMap.dcMotor.get("c");
         linears = hardwareMap.dcMotor.get("li");
+                /*
+        claw = hardwareMap.servo.get("cl");
+        claw2 = hardwareMap.servo.get("cl2");
+                */
         distance = hardwareMap.opticalDistanceSensor.get("d");
 
 
@@ -52,6 +63,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
         @Override
         public void loop() {
+
         //DRIVE TRAIN
         float lefty = gamepad1.left_stick_y;
         float rightx = gamepad1.right_stick_x;
@@ -115,24 +127,24 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
         boolean outtake = gamepad1.x;
 
         //Intake //sensor measured in centimeters
-        if (intake == true && Intake == 0 && distance.getLightDetected() < 0.5){
+        if (intake == true && Intake == 0 && distance.getLightDetected() < 5z.5){
 
         Intake = 1;
 
 
         }
-        else if(intake == false && Intake == 1 && distance.getLightDetected() < 0.5){
+        else if(intake == false && Intake == 1 && distance.getLightDetected() < 5.5){
 
         conveyor.setPower(0.5);
         Intake = 2;
 
         }
-        else if (intake == true && Intake == 2 || distance.getLightDetected() > 0.5){
+        else if (intake == true && Intake == 2 || distance.getLightDetected() > 5.5){
 
         Intake = 3;
 
         }
-        else if (intake == false && Intake == 3 || distance.getLightDetected() > 0.5){
+        else if (intake == false && Intake == 3 || distance.getLightDetected() > 5.5){
 
         conveyor.setPower(0.0);
         Intake = 0;
@@ -157,8 +169,17 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
         Outtake = 0;
         }
+        //Claw.. GET VERIFICATION ON TYPE OF SERVO AND DEGREE OF TURN
+        /*
+        boolean claw_extension = gamepad1.y;
+        boolean claw_retraction = gamepad1.b;
 
+        if (claw_extension == true){
+                claw.setPosition(0.0);
+                claw2.setPosition(0.0);
 
+        }
+                */
         }
 
 
