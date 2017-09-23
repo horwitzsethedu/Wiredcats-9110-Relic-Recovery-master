@@ -11,28 +11,27 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 //WIlllllllllllllllllllllllY BIllY BIllY BO WIllY
 
 @TeleOp(name="Teleop9110", group="Opmode")
+        public class TeleOp9110 extends OpMode {
 
-public class TeleOp9110 extends OpMode {
+        //Drive train
+        DcMotor left;
+        DcMotor right;
 
-    //Drive train
-    DcMotor left;
-    DcMotor right;
+        //LINEAR
+        DcMotor linears;
 
-    //LINEAR
-    DcMotor linears;
+        //SKIZZORS
+        DcMotor scissors;
 
-    //SKIZZORS
-    DcMotor scissors;
+        //Glyphs conveyor
+        DcMotor conveyor;
 
-    //Glyphs conveyor
-    DcMotor conveyor;
-
-    int Intake = 0;
-    int Outtake = 0;
+        int Intake = 0;
+        int Outtake = 0;
 
 
-    @Override
-    public void init() {
+        @Override
+        public void init() {
 
         left = hardwareMap.dcMotor.get("l");
         right = hardwareMap.dcMotor.get("r");
@@ -43,33 +42,33 @@ public class TeleOp9110 extends OpMode {
 
         left.setDirection(DcMotorSimple.Direction.REVERSE);
 
-    }
+        }
 
-    @Override
-    public void loop() {
+        @Override
+        public void loop() {
         //DRIVE TRAIN
         float lefty = gamepad1.left_stick_y;
         float rightx = gamepad1.right_stick_x;
 
         if (lefty > 0.5){
 
-            left.setPower(1.0);
-            right.setPower(1.0);
+        left.setPower(1.0);
+        right.setPower(1.0);
         }
         else if (lefty < -0.5){
 
-            left.setPower(-1.0);
-            right.setPower(-1.0);
+        left.setPower(-1.0);
+        right.setPower(-1.0);
         }
         if (rightx > 0.5){
 
-            right.setPower(1.0);
-            left.setPower(-1.0);
+        right.setPower(1.0);
+        left.setPower(-1.0);
         }
         else if (rightx < -0.5) {
 
-            right.setPower(-1.0);
-            left.setPower(1.0);
+        right.setPower(-1.0);
+        left.setPower(1.0);
         }
 
 
@@ -77,32 +76,32 @@ public class TeleOp9110 extends OpMode {
         float leftTrigger2 = gamepad2.left_trigger;
         float rightTrigger2 = gamepad2.right_trigger;
         if (leftTrigger2 < 0.05){
-            scissors.setPower(0.0);
+        scissors.setPower(0.0);
         }
         else if (leftTrigger2 > 0.05) {
-            scissors.setPower(1.0);
+        scissors.setPower(1.0);
         }
         if (rightTrigger2 < 0){
-            scissors.setPower(0.0);
+        scissors.setPower(0.0);
         }
         else if (rightTrigger2 > 0.05) {
-            scissors.setPower(-1.0);
+        scissors.setPower(-1.0);
         }
 
         //Linear Slide
         float leftTrigger1 = gamepad1.left_trigger;
         float rightTrigger1 = gamepad1.right_trigger;
         if (leftTrigger1 < 0.05){
-            linears.setPower(0.0);
+        linears.setPower(0.0);
         }
         else if (leftTrigger1 > 0.05){
-            linears.setPower(1.0);
+        linears.setPower(1.0);
         }
         if (rightTrigger1 < 0.05){
-            linears.setPower(0.0);
+        linears.setPower(0.0);
         }
         else if (rightTrigger1 > 0.05){
-            linears.setPower(-1.0);
+        linears.setPower(-1.0);
         }
 
         //Conveyor INTAKE & OUTTAKE, THX JUANNNN
@@ -112,45 +111,45 @@ public class TeleOp9110 extends OpMode {
         //Intake
         if (intake == true && Intake == 0){
 
-            Intake = 1;
+        Intake = 1;
         }
         else if(intake == false && Intake == 1){
 
-            conveyor.setPower(0.5);
-            Intake = 2;
+        conveyor.setPower(0.5);
+        Intake = 2;
 
         }
         else if (intake == true && Intake == 2){
 
-            Intake = 3;
+        Intake = 3;
 
         }
         else if (intake == false && Intake == 3){
 
-            conveyor.setPower(0.0);
-            Intake = 0;
+        conveyor.setPower(0.0);
+        Intake = 0;
 
         }
 
         //Outtake
         if (outtake == true && Outtake == 0){
 
-            Outtake = 1;
+        Outtake = 1;
         }
         else if (outtake == false && Outtake == 1){
 
-            conveyor.setPower(-0.5);
-            Outtake = 2;
+        conveyor.setPower(-0.5);
+        Outtake = 2;
         }
         else if (outtake == true && Outtake == 2){
 
-            Outtake = 3;
+        Outtake = 3;
         }
         else if (outtake == false && Outtake == 3){
 
-            Outtake = 0;
+        Outtake = 0;
         }
 
-    }
+        }
 
-}
+        }
