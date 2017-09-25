@@ -7,15 +7,14 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
-//meh tbh idk ab the claw idea, i gotta see it mechanically first
-//wat is extens ecks dee
+//wat is extens ecks dee,
 //guang help meh ~Anjew
 //WIlllllllllllllllllllllllY BIllY BIllY BO WIllY
 
 //William needs to build the claw so mis can program ;-;
 
 @TeleOp(name="Teleop9110", group="Opmode")
-        public class TeleOp9110 extends OpMode {
+        public class TeleOp9110 extends OpMode{
 
         //Drive train
         DcMotor left;
@@ -129,7 +128,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
         boolean outtake = gamepad1.x;
 
         //Intake //sensor measured in centimeters
-        if (intake == true && Intake == 0 && distance.getLightDetected() < 5z.5){
+        if (intake == true && Intake == 0 && distance.getLightDetected() < 5.5){
 
         Intake = 1;
 
@@ -137,7 +136,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
         }
         else if(intake == false && Intake == 1 && distance.getLightDetected() < 5.5){
 
-        conveyor.setPower(0.5);
+        conveyor.setPower(1.0);
         Intake = 2;
 
         }
@@ -160,7 +159,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
         }
         else if (outtake == false && Outtake == 1){
 
-        conveyor.setPower(-0.5);
+        conveyor.setPower(-1.0);
         Outtake = 2;
         }
         else if (outtake == true && Outtake == 2){
@@ -169,6 +168,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
         }
         else if (outtake == false && Outtake == 3){
 
+        conveyor.setPower(0.0);
         Outtake = 0;
         }
         //Claw.. GET VERIFICATION ON TYPE OF SERVO AND DEGREE OF TURN
