@@ -10,5 +10,4 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 public class AutoRed9110 extends TeleOp9110{
     //welp, idk what i is doin. I ned some autonomous lessons ('0_0')
 
-
 }
